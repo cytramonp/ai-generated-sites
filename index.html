@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Generated Sites — Demo</title>
+  <style>
+    :root {
+      --bg: #0f0f13;
+      --surface: #1a1a24;
+      --border: #2e2e42;
+      --accent: #7c6af7;
+      --accent2: #f76ca8;
+      --text: #e8e8f0;
+      --muted: #6b6b88;
+    }
+    [data-theme="light"] {
+      --bg: #f4f4f9;
+      --surface: #ffffff;
+      --border: #dddde8;
+      --accent: #5b48e8;
+      --accent2: #e84888;
+      --text: #111118;
+      --muted: #7777aa;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      transition: background 0.3s, color 0.3s;
+      overflow-x: hidden;
+    }
+
+    /* ── Canvas background ── */
+    #bg-canvas {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      opacity: 0.35;
+    }
+
+    /* ── Layout ── */
+    .container {
+      position: relative;
+      z-index: 1;
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ── Header ── */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 24px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .logo {
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .theme-btn {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 6px 14px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 0.85rem;
+      transition: border-color 0.2s, transform 0.15s;
+    }
+    .theme-btn:hover { border-color: var(--accent); transform: scale(1.05); }
+
+    /* ── Hero ── */
+    .hero {
+      text-align: center;
+      padding: 80px 0 60px;
+    }
+    .hero h1 {
+      font-size: clamp(2rem, 6vw, 3.5rem);
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 20px;
+    }
+    .hero h1 span {
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .typing-line {
+      font-size: 1.1rem;
+      color: var(--muted);
+      min-height: 1.6em;
+      margin-bottom: 36px;
+    }
+    .typing-cursor {
+      display: inline-block;
+      width: 2px;
+      height: 1.1em;
+      background: var(--accent);
+      margin-left: 2px;
+      vertical-align: middle;
+      animation: blink 0.8s step-end infinite;
+    }
+    @keyframes blink { 50% { opacity: 0; } }
+
+    .cta-row {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .btn {
+      padding: 12px 28px;
+      border-radius: 10px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      transition: transform 0.15s, box-shadow 0.2s;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      color: #fff;
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(124,106,247,0.4); }
+    .btn-ghost {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--text);
+    }
+    .btn-ghost:hover { border-color: var(--accent); transform: translateY(-2px); }
+
+    /* ── Stats ── */
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 16px;
+      margin: 64px 0;
+    }
+    .stat-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px 20px;
+      text-align: center;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .stat-card:hover { border-color: var(--accent); transform: translateY(-3px); }
+    .stat-num {
+      font-size: 2.2rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .stat-label { font-size: 0.82rem; color: var(--muted); margin-top: 6px; text-transform: uppercase; letter-spacing: 0.06em; }
+
+    /* ── Feature cards ── */
+    .section-title {
+      font-size: 1.6rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .section-sub {
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin-bottom: 32px;
+    }
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+      margin-bottom: 80px;
+    }
+    .feature-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px;
+      transition: border-color 0.2s, transform 0.2s;
+      cursor: default;
+    }
+    .feature-card:hover { border-color: var(--accent); transform: translateY(-3px); }
+    .feature-icon { font-size: 2rem; margin-bottom: 12px; }
+    .feature-title { font-size: 1rem; font-weight: 700; margin-bottom: 8px; }
+    .feature-desc { font-size: 0.88rem; color: var(--muted); line-height: 1.6; }
+
+    /* ── Clicker game ── */
+    .game-section {
+      text-align: center;
+      padding: 48px 0 80px;
+    }
+    .clicker-area {
+      display: inline-block;
+      margin: 24px 0;
+    }
+    .click-btn {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      border: none;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      font-size: 3rem;
+      cursor: pointer;
+      transition: transform 0.1s, box-shadow 0.2s;
+      box-shadow: 0 0 0 0 rgba(124,106,247,0.5);
+      position: relative;
+    }
+    .click-btn:active { transform: scale(0.93); }
+    .click-btn.pop { animation: pop 0.15s ease-out; }
+    @keyframes pop { 0%{transform:scale(1)} 50%{transform:scale(1.12)} 100%{transform:scale(1)} }
+    .click-score {
+      font-size: 3rem;
+      font-weight: 800;
+      margin-top: 16px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .click-label { color: var(--muted); font-size: 0.85rem; margin-top: 4px; }
+    .particles-wrap { position: relative; display: inline-block; }
+    .float-num {
+      position: absolute;
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--accent2);
+      pointer-events: none;
+      animation: floatUp 0.9s ease-out forwards;
+    }
+    @keyframes floatUp {
+      0%   { opacity: 1; transform: translateY(0) scale(1); }
+      100% { opacity: 0; transform: translateY(-80px) scale(1.3); }
+    }
+
+    /* ── Footer ── */
+    footer {
+      text-align: center;
+      padding: 32px 0;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 0.82rem;
+    }
+  </style>
+</head>
+<body>
+
+<canvas id="bg-canvas"></canvas>
+
+<div class="container">
+
+  <header>
+    <span class="logo">AI Sites</span>
+    <button class="theme-btn" id="themeToggle">☀️ Light</button>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <h1>Pages built by<br/><span>Artificial Intelligence</span></h1>
+    <p class="typing-line" id="typing-line"><span id="typed-text"></span><span class="typing-cursor"></span></p>
+    <div class="cta-row">
+      <button class="btn btn-primary" onclick="scrollToGame()">Try the Demo ↓</button>
+      <button class="btn btn-ghost" onclick="alert('Coming soon 🚀')">View Showcase</button>
+    </div>
+  </section>
+
+  <!-- Stats -->
+  <div class="stats">
+    <div class="stat-card">
+      <div class="stat-num" id="stat-pages">0</div>
+      <div class="stat-label">Pages Generated</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num" id="stat-time">0s</div>
+      <div class="stat-label">Avg. Build Time</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num" id="stat-lines">0</div>
+      <div class="stat-label">Lines of Code</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num" id="stat-deploys">0</div>
+      <div class="stat-label">Deployments</div>
+    </div>
+  </div>
+
+  <!-- Features -->
+  <div class="section-title">What's possible</div>
+  <p class="section-sub">Every page — designed, coded, and deployed in seconds.</p>
+  <div class="features">
+    <div class="feature-card">
+      <div class="feature-icon">⚡</div>
+      <div class="feature-title">Instant Generation</div>
+      <div class="feature-desc">Describe what you want in plain language. HTML, CSS, JS — done in seconds.</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🎨</div>
+      <div class="feature-title">Custom Design</div>
+      <div class="feature-desc">Dark mode, animations, responsive layouts — everything configured to your taste.</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🚀</div>
+      <div class="feature-title">Auto Deploy</div>
+      <div class="feature-desc">Push to GitHub, Vercel picks it up instantly. Zero config after setup.</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🔁</div>
+      <div class="feature-title">Iterate Fast</div>
+      <div class="feature-desc">Change a color, add a section, swap copy — just ask and it's live in minutes.</div>
+    </div>
+  </div>
+
+  <!-- Mini game -->
+  <div class="game-section" id="game">
+    <div class="section-title">Click the button 🤷</div>
+    <p class="section-sub">It does nothing useful. That's the point.</p>
+    <div class="clicker-area">
+      <div class="particles-wrap">
+        <button class="click-btn" id="clickBtn" onclick="handleClick(event)">🦀</button>
+      </div>
+      <div class="click-score" id="click-score">0</div>
+      <div class="click-label">clicks</div>
+    </div>
+  </div>
+
+  <footer>
+    Generated by Crab 🦀 · Powered by AI · Deployed on Vercel
+  </footer>
+
+</div>
+
+<script>
+  // ── Theme toggle ──
+  const themeBtn = document.getElementById('themeToggle');
+  themeBtn.addEventListener('click', () => {
+    const html = document.documentElement;
+    const isDark = html.dataset.theme === 'dark';
+    html.dataset.theme = isDark ? 'light' : 'dark';
+    themeBtn.textContent = isDark ? '🌙 Dark' : '☀️ Light';
+  });
+
+  // ── Typing effect ──
+  const lines = [
+    'Generate → commit → deploy. Done.',
+    'No templates. Just AI and an idea.',
+    'HTML, CSS, JS — all from a single prompt.',
+    'Your Vercel site, updated in minutes.',
+    'Dark mode? Sure. Animations? Why not.',
+  ];
+  let li = 0, ci = 0, deleting = false;
+  const typedEl = document.getElementById('typed-text');
+  function type() {
+    const line = lines[li];
+    if (!deleting) {
+      typedEl.textContent = line.slice(0, ++ci);
+      if (ci === line.length) { deleting = true; setTimeout(type, 2000); return; }
+    } else {
+      typedEl.textContent = line.slice(0, --ci);
+      if (ci === 0) { deleting = false; li = (li + 1) % lines.length; }
+    }
+    setTimeout(type, deleting ? 40 : 60);
+  }
+  type();
+
+  // ── Animated counters ──
+  function animateCount(el, target, suffix = '', duration = 1600) {
+    let start = null;
+    function step(ts) {
+      if (!start) start = ts;
+      const p = Math.min((ts - start) / duration, 1);
+      const ease = 1 - Math.pow(1 - p, 3);
+      el.textContent = Math.floor(ease * target) + suffix;
+      if (p < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        animateCount(document.getElementById('stat-pages'), 1247);
+        animateCount(document.getElementById('stat-time'), 4, 's');
+        animateCount(document.getElementById('stat-lines'), 380, 'k');
+        animateCount(document.getElementById('stat-deploys'), 93);
+        observer.disconnect();
+      }
+    });
+  }, { threshold: 0.3 });
+  observer.observe(document.querySelector('.stats'));
+
+  // ── Clicker ──
+  let clicks = 0;
+  function handleClick(e) {
+    clicks++;
+    document.getElementById('click-score').textContent = clicks;
+    const btn = document.getElementById('clickBtn');
+    btn.classList.remove('pop');
+    void btn.offsetWidth;
+    btn.classList.add('pop');
+
+    // Float number
+    const wrap = btn.closest('.particles-wrap');
+    const span = document.createElement('span');
+    span.className = 'float-num';
+    span.textContent = '+1';
+    span.style.left = (Math.random() * 80 + 10) + '%';
+    span.style.top = '20px';
+    wrap.appendChild(span);
+    span.addEventListener('animationend', () => span.remove());
+  }
+
+  // ── Particle canvas ──
+  const canvas = document.getElementById('bg-canvas');
+  const ctx = canvas.getContext('2d');
+  let W, H, particles = [];
+  function resize() {
+    W = canvas.width = window.innerWidth;
+    H = canvas.height = window.innerHeight;
+  }
+  window.addEventListener('resize', resize);
+  resize();
+
+  for (let i = 0; i < 60; i++) particles.push({
+    x: Math.random() * W, y: Math.random() * H,
+    r: Math.random() * 1.8 + 0.4,
+    dx: (Math.random() - 0.5) * 0.4,
+    dy: (Math.random() - 0.5) * 0.4,
+  });
+
+  function drawParticles() {
+    ctx.clearRect(0, 0, W, H);
+    const isDark = document.documentElement.dataset.theme === 'dark';
+    const col = isDark ? '180,170,255' : '90,70,220';
+    particles.forEach(p => {
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(${col},0.7)`;
+      ctx.fill();
+      p.x = (p.x + p.dx + W) % W;
+      p.y = (p.y + p.dy + H) % H;
+    });
+    // Draw connecting lines
+    for (let i = 0; i < particles.length; i++) {
+      for (let j = i + 1; j < particles.length; j++) {
+        const dx = particles[i].x - particles[j].x;
+        const dy = particles[i].y - particles[j].y;
+        const dist = Math.sqrt(dx*dx + dy*dy);
+        if (dist < 120) {
+          ctx.beginPath();
+          ctx.moveTo(particles[i].x, particles[i].y);
+          ctx.lineTo(particles[j].x, particles[j].y);
+          ctx.strokeStyle = `rgba(${col},${0.15 * (1 - dist/120)})`;
+          ctx.lineWidth = 0.5;
+          ctx.stroke();
+        }
+      }
+    }
+    requestAnimationFrame(drawParticles);
+  }
+  drawParticles();
+
+  function scrollToGame() {
+    document.getElementById('game').scrollIntoView({ behavior: 'smooth' });
+  }
+</script>
+</body>
+</html>
