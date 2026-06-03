@@ -4,25 +4,25 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>HoReCaHub — Viability Deep Research</title>
-  <meta name="description" content="Глубокий viability-разбор HoReCaHub: аналоги, риски, спрос, монетизация, positioning и стратегия запуска." />
+  <meta name="description" content="Полная веб-версия оригинального документа HoReCaHub viability deep research: весь текст, риски, аналоги, спрос, монетизация и источники." />
   <style>
     :root {
-      --bg: #07111f;
-      --bg-2: #0c172a;
-      --panel: rgba(10, 17, 31, 0.78);
-      --panel-2: rgba(17, 24, 39, 0.88);
-      --line: rgba(148, 163, 184, 0.16);
-      --text: #e6eef9;
-      --muted: #9fb0c9;
-      --soft: #c8d4e6;
+      --bg: #08111f;
+      --bg2: #0e1a30;
+      --panel: rgba(12, 20, 35, 0.84);
+      --panel2: rgba(16, 25, 44, 0.92);
+      --line: rgba(148,163,184,.16);
+      --text: #e6eefb;
+      --muted: #a8b6cc;
+      --soft: #d9e3f5;
       --violet: #8b5cf6;
+      --cyan: #38bdf8;
       --green: #22c55e;
       --amber: #f59e0b;
       --red: #fb923c;
-      --cyan: #38bdf8;
-      --shadow: 0 24px 80px rgba(0,0,0,.38);
+      --shadow: 0 24px 70px rgba(0,0,0,.36);
       --radius: 24px;
-      --max: 1240px;
+      --max: 1280px;
     }
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
@@ -31,118 +31,76 @@
       font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
       color: var(--text);
       background:
-        radial-gradient(circle at 0% 0%, rgba(56,189,248,.14), transparent 26%),
-        radial-gradient(circle at 100% 0%, rgba(139,92,246,.18), transparent 30%),
-        radial-gradient(circle at 50% 100%, rgba(34,197,94,.09), transparent 30%),
-        linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 100%);
-      line-height: 1.58;
+        radial-gradient(circle at top left, rgba(56,189,248,.12), transparent 30%),
+        radial-gradient(circle at top right, rgba(139,92,246,.18), transparent 32%),
+        linear-gradient(180deg, var(--bg), var(--bg2));
+      line-height: 1.62;
     }
     a { color: #c4b5fd; text-decoration: none; }
     a:hover { text-decoration: underline; }
-    .wrap { max-width: var(--max); margin: 0 auto; padding: 28px 20px 90px; }
     .nav {
       position: sticky; top: 0; z-index: 20;
-      backdrop-filter: blur(12px);
-      background: rgba(7,17,31,.55);
+      background: rgba(8,17,31,.7); backdrop-filter: blur(14px);
       border-bottom: 1px solid rgba(148,163,184,.1);
-      margin: -28px -20px 24px; padding: 14px 20px;
+      padding: 14px 20px;
     }
-    .nav-inner { max-width: var(--max); margin: 0 auto; display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
-    .brand { font-weight: 800; color: white; margin-right: auto; }
-    .nav a { font-size: 14px; color: var(--muted); }
+    .nav-inner { max-width: var(--max); margin: 0 auto; display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
+    .brand { margin-right: auto; font-weight: 800; color: white; }
+    .nav a { color: var(--muted); font-size: 14px; }
+    .wrap { max-width: var(--max); margin: 0 auto; padding: 28px 20px 90px; }
     .hero {
-      position: relative;
-      overflow: hidden;
-      padding: 42px;
-      border-radius: 34px;
+      position: relative; overflow: hidden;
+      padding: 40px;
+      border-radius: 32px;
       border: 1px solid var(--line);
-      background: linear-gradient(180deg, rgba(10,17,31,.92), rgba(12,23,42,.82));
+      background: linear-gradient(180deg, rgba(11,18,32,.95), rgba(14,26,48,.86));
       box-shadow: var(--shadow);
     }
-    .hero::before {
-      content: "";
-      position: absolute;
-      inset: -40px auto auto -40px;
-      width: 240px; height: 240px;
-      background: radial-gradient(circle, rgba(56,189,248,.18), transparent 70%);
-      pointer-events: none;
-    }
     .hero::after {
-      content: "";
-      position: absolute;
-      inset: auto -40px -40px auto;
-      width: 280px; height: 280px;
-      background: radial-gradient(circle, rgba(139,92,246,.18), transparent 70%);
-      pointer-events: none;
+      content:""; position:absolute; right:-60px; bottom:-60px; width:260px; height:260px;
+      background: radial-gradient(circle, rgba(139,92,246,.24), transparent 68%);
     }
     .eyebrow {
-      display: inline-flex; align-items: center; gap: 8px;
-      border: 1px solid rgba(139,92,246,.22);
-      background: rgba(139,92,246,.11);
-      color: #ddd6fe;
-      padding: 8px 12px; border-radius: 999px;
-      font-size: 12px; text-transform: uppercase; letter-spacing: .08em;
+      display:inline-flex; gap:8px; align-items:center;
+      font-size:12px; text-transform:uppercase; letter-spacing:.08em;
+      color:#ddd6fe; background:rgba(139,92,246,.12); border:1px solid rgba(139,92,246,.24);
+      border-radius:999px; padding:8px 12px;
     }
-    h1 { font-size: clamp(34px, 6vw, 66px); line-height: 1.02; margin: 18px 0 16px; }
-    .lead { font-size: 19px; color: var(--soft); max-width: 920px; margin: 0 0 18px; }
+    h1 { font-size: clamp(34px, 6vw, 64px); line-height: 1.03; margin: 16px 0 10px; }
+    .lead { font-size: 20px; color: var(--soft); max-width: 920px; margin: 0 0 10px; }
     .sublead { color: var(--muted); max-width: 980px; }
-    .tagrow, .score-tags { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 18px; }
-    .tag, .score-tag {
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,.04);
-      padding: 8px 12px; border-radius: 999px;
-      font-size: 13px; color: #dbe6f6;
-    }
-    .section { margin-top: 28px; }
+    .tagrow { display:flex; flex-wrap:wrap; gap:10px; margin-top:18px; }
+    .tag { padding:8px 12px; border-radius:999px; font-size:13px; border:1px solid var(--line); background:rgba(255,255,255,.04); color:#dce7f7; }
+    .section { margin-top: 26px; }
     .section h2 { font-size: 30px; margin: 0 0 16px; }
-    .grid { display: grid; grid-template-columns: repeat(12,1fr); gap: 18px; }
+    .grid { display:grid; grid-template-columns: repeat(12,1fr); gap:18px; }
     .card {
       background: var(--panel);
-      border: 1px solid var(--line);
+      border:1px solid var(--line);
       border-radius: var(--radius);
       padding: 22px;
       box-shadow: var(--shadow);
-      backdrop-filter: blur(8px);
     }
-    .span-3 { grid-column: span 3; }
-    .span-4 { grid-column: span 4; }
-    .span-5 { grid-column: span 5; }
-    .span-6 { grid-column: span 6; }
-    .span-7 { grid-column: span 7; }
-    .span-8 { grid-column: span 8; }
-    .span-12 { grid-column: span 12; }
-    .metric { font-size: 42px; font-weight: 800; margin: 4px 0; }
+    .span-3{grid-column:span 3}.span-4{grid-column:span 4}.span-5{grid-column:span 5}.span-6{grid-column:span 6}.span-7{grid-column:span 7}.span-8{grid-column:span 8}.span-12{grid-column:span 12}
+    .metric { font-size: 40px; font-weight: 800; margin: 0 0 4px; }
     .metric-label { color: var(--muted); font-size: 14px; }
-    h3 { margin: 0 0 10px; font-size: 19px; }
+    h3 { margin: 0 0 10px; font-size: 20px; }
+    h4 { margin: 18px 0 10px; font-size: 16px; color: #dfe8f9; }
     p { margin: 0 0 12px; }
-    ul { margin: 0; padding-left: 18px; color: var(--muted); }
+    ul { margin: 0; padding-left: 20px; color: var(--soft); }
     li + li { margin-top: 8px; }
-    .quote {
-      border-left: 3px solid var(--violet);
-      padding-left: 14px; color: #e3eafe; font-size: 18px;
-    }
-    .kicker { color: var(--muted); font-size: 14px; text-transform: uppercase; letter-spacing: .08em; }
-    .good { color: #86efac; }
-    .warn { color: #fcd34d; }
-    .risk { color: #fdba74; }
-    .bad { color: #fda4af; }
-    .table { width: 100%; border-collapse: collapse; font-size: 14px; }
-    .table th, .table td { padding: 14px 12px; vertical-align: top; border-bottom: 1px solid var(--line); }
-    .table th { color: #d8e4f6; font-size: 12px; text-transform: uppercase; letter-spacing: .06em; text-align: left; }
     .muted { color: var(--muted); }
-    .logos { display: grid; grid-template-columns: repeat(auto-fit,minmax(170px,1fr)); gap: 12px; }
-    .logo-card {
-      display: flex; align-items: center; gap: 12px; padding: 14px; border-radius: 18px;
-      background: rgba(255,255,255,.03); border: 1px solid var(--line);
-    }
-    .logo-card img { width: 34px; height: 34px; border-radius: 8px; background: #fff; object-fit: contain; }
-    .pill { display: inline-flex; font-size: 12px; border-radius: 999px; padding: 5px 10px; border: 1px solid var(--line); color: var(--soft); }
-    .source-list li a { color: #c7d2fe; }
-    .footer { margin-top: 40px; color: var(--muted); font-size: 14px; text-align: center; }
-    @media (max-width: 980px) {
-      .span-3,.span-4,.span-5,.span-6,.span-7,.span-8,.span-12 { grid-column: span 12; }
-      .hero { padding: 28px; }
-    }
+    .quote { border-left: 3px solid var(--violet); padding-left: 14px; font-size: 18px; }
+    .table { width:100%; border-collapse: collapse; font-size:14px; }
+    .table th,.table td{ padding:14px 12px; border-bottom:1px solid var(--line); vertical-align: top; text-align:left; }
+    .table th{ color:#dce7fa; font-size:12px; text-transform:uppercase; letter-spacing:.06em; }
+    .logos{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px}
+    .logo-card{display:flex;gap:12px;align-items:center;padding:14px;border-radius:18px;background:rgba(255,255,255,.03);border:1px solid var(--line)}
+    .logo-card img{width:34px;height:34px;border-radius:8px;background:#fff;object-fit:contain}
+    .pill{display:inline-flex;padding:5px 10px;border-radius:999px;border:1px solid var(--line);font-size:12px;color:#dce7f7}
+    .risk{color:#fdba74}.good{color:#86efac}.warn{color:#fcd34d}.bad{color:#fca5a5}
+    .footer{margin-top:40px;color:var(--muted);font-size:14px;text-align:center}
+    @media (max-width: 980px){.span-3,.span-4,.span-5,.span-6,.span-7,.span-8,.span-12{grid-column:span 12}.hero{padding:28px}}
   </style>
 </head>
 <body>
@@ -150,26 +108,26 @@
     <div class="nav-inner">
       <div class="brand">HoReCaHub Research</div>
       <a href="#summary">Summary</a>
-      <a href="#analogs">Analogs</a>
+      <a href="#competitors">Competitors</a>
       <a href="#demand">Demand</a>
       <a href="#risks">Risks</a>
+      <a href="#validation">Validation</a>
       <a href="#monetization">Monetization</a>
-      <a href="#positioning">Positioning</a>
       <a href="#sources">Sources</a>
     </div>
   </div>
   <div class="wrap">
     <section class="hero" id="summary">
-      <div class="eyebrow">Viability deep research · 2 June 2026</div>
+      <div class="eyebrow">Full original text · rebuilt as web page</div>
       <h1>HoReCaHub</h1>
-      <p class="lead">Оценка бизнес-идеи маркетплейса экспертов и профессионалов гостиничной индустрии.</p>
-      <p class="sublead">Фокус исследования: viability, карта аналогов и заменителей, потенциальная монетизация, риски marketplace-модели, признаки спроса и план проверки гипотез. Ниже — полноценная веб-версия документа, сжатая в нормальную структуру и оформленная для шаринга.</p>
+      <p class="lead">Viability deep research</p>
+      <p class="sublead">Оценка бизнес-идеи маркетплейса экспертов и профессионалов гостиничной индустрии. Дата: 2 июня 2026. Фокус исследования: проверка жизнеспособности идеи, карта аналогов и заменителей, потенциальная монетизация, риски marketplace-модели, признаки спроса и план проверки гипотез.</p>
       <div class="tagrow">
         <div class="tag">Hospitality</div>
-        <div class="tag">Expert Network</div>
+        <div class="tag">Marketplace</div>
+        <div class="tag">Expert network</div>
         <div class="tag">Pre-opening</div>
         <div class="tag">CIS / GCC / MENA</div>
-        <div class="tag">Verified local experts</div>
       </div>
     </section>
 
@@ -177,214 +135,429 @@
       <div class="grid">
         <div class="card span-3"><div class="metric">8/10</div><div class="metric-label">Реальность боли</div></div>
         <div class="card span-3"><div class="metric">7/10</div><div class="metric-label">Размер рынка</div></div>
-        <div class="card span-3"><div class="metric">4/10</div><div class="metric-label">Viability как global marketplace</div></div>
-        <div class="card span-3"><div class="metric">8/10</div><div class="metric-label">Viability как concierge-first network</div></div>
+        <div class="card span-3"><div class="metric">4/10</div><div class="metric-label">Viability как global HoReCa marketplace</div></div>
+        <div class="card span-3"><div class="metric">8/10</div><div class="metric-label">Viability как concierge-first expert marketplace</div></div>
         <div class="card span-8">
-          <div class="kicker">Executive summary</div>
-          <h3>Главный вывод</h3>
-          <p class="quote">Идея жизнеспособна, но не в формате «глобальный маркетплейс всего для HoReCa» с первого дня. В таком виде проект почти наверняка утонет из-за холодного старта, слабой ликвидности и слишком широкой категории.</p>
-          <p class="muted">Сильная версия идеи: узкий expert marketplace / concierge-network для pre-opening и локальных гостиничных задач — IT-инфраструктура, PMS, WiFi, locks, IPTV, procurement, laundry, F&amp;B и локальные подрядчики. Особенно перспективны CIS, GCC, MENA и другие emerging markets.</p>
+          <h3>Executive summary</h3>
+          <p class="quote">Главный вывод: идея жизнеспособна, но не в формате "глобальный маркетплейс всего для HoReCa" с первого дня. В таком виде проект почти наверняка утонет из-за холодного старта, слабой ликвидности и слишком широкой категории.</p>
+          <ul>
+            <li>Сильная версия идеи: узкий экспертный marketplace / concierge-network для pre-opening и локальных гостиничных задач: IT-инфраструктура, PMS, WiFi, замки, IPTV, procurement, laundry, F&amp;B и локальные подрядчики.</li>
+            <li>Особенно перспективны CIS, GCC, MENA и другие emerging markets, где личные связи и локальное знание действительно важны.</li>
+            <li>Коротко: это должно быть не "еще один каталог поставщиков", а структурированная версия формулы "I know a guy, но verified, searchable and bookable".</li>
+          </ul>
         </div>
         <div class="card span-4">
-          <h3>Лучшая формула</h3>
-          <p class="quote">“I know a guy, but verified, searchable and bookable.”</p>
-          <p class="muted">Это и есть правильная интерпретация идеи: не каталог ради каталога, а структурированная версия личных рекомендаций.</p>
+          <h3>Главная формула</h3>
+          <p class="quote">I know a guy, но verified, searchable and bookable.</p>
         </div>
       </div>
     </section>
 
-    <section class="section" id="analogs">
-      <h2>Карта похожих проектов</h2>
-      <div class="card" style="margin-bottom:18px;">
-        <h3>Ключевые игроки и логотипы</h3>
-        <div class="logos">
-          <a class="logo-card" href="https://www.hotelminder.com" target="_blank" rel="noreferrer"><img src="https://www.google.com/s2/favicons?domain=hotelminder.com&sz=128" alt="HotelMinder"><div><strong>HotelMinder Lobby</strong><div class="muted">Closest analog</div></div></a>
-          <a class="logo-card" href="https://cayugahospitality.com" target="_blank" rel="noreferrer"><img src="https://www.google.com/s2/favicons?domain=cayugahospitality.com&sz=128" alt="Cayuga"><div><strong>Cayuga</strong><div class="muted">Independent consultant network</div></div></a>
-          <a class="logo-card" href="https://ishc.com" target="_blank" rel="noreferrer"><img src="https://www.google.com/s2/favicons?domain=ishc.com&sz=128" alt="ISHC"><div><strong>ISHC</strong><div class="muted">Elite directory / trust layer</div></div></a>
-          <a class="logo-card" href="https://www.thehospitalitynetwork.com" target="_blank" rel="noreferrer"><img src="https://www.google.com/s2/favicons?domain=thehospitalitynetwork.com&sz=128" alt="The Hospitality Network"><div><strong>The Hospitality Network</strong><div class="muted">MENA network + discovery</div></div></a>
-          <a class="logo-card" href="https://www.hozpitality.com" target="_blank" rel="noreferrer"><img src="https://www.google.com/s2/favicons?domain=hozpitality.com&sz=128" alt="Hozpitality"><div><strong>Hozpitality</strong><div class="muted">Community + marketplace</div></div></a>
-          <a class="logo-card" href="https://hoteltechreport.com" target="_blank" rel="noreferrer"><img src="https://www.google.com/s2/favicons?domain=hoteltechreport.com&sz=128" alt="HotelTechReport"><div><strong>HotelTechReport</strong><div class="muted">Software discovery</div></div></a>
+    <section class="section">
+      <div class="grid">
+        <div class="card span-6">
+          <h3>1. Самый важный конкурент уже существует</h3>
+          <p>Самый близкий аналог — <a href="https://www.hotelminder.com/lobby-hotelier-expert-network" target="_blank" rel="noreferrer">HotelMinder Lobby</a>. Это почти прямой конкурент: HotelMinder описывает Lobby как curated network гостиничных экспертов, где отельеры бесплатно заходят, описывают проблему, а платформа соединяет их с vetted experts.</p>
+          <ul>
+            <li>Модель у них commission-based.</li>
+            <li>Фокус: технологии, коммерция, операции, имплементация, выбор PMS/RMS и решение конкретных задач отелей.</li>
+          </ul>
+          <p>Это важно по двум причинам:</p>
+          <ul>
+            <li>Во-первых, рынок уже кто-то увидел, значит проблема реальная.</li>
+            <li>Во-вторых, нельзя позиционироваться просто как "marketplace hospitality consultants" — это уже не уникально.</li>
+          </ul>
+          <p>Как отличаться:</p>
+          <ul>
+            <li>"Verified local hospitality experts for hotel openings in CIS, GCC and emerging markets"</li>
+            <li>"Local hotel IT and pre-opening expert network: WiFi, PMS, locks, IPTV, infrastructure, local vendors"</li>
+          </ul>
+        </div>
+        <div class="card span-6">
+          <h3>2. Текущий HoReCaHub уже попал в правильный use case</h3>
+          <p>На тестовом сайте <a href="https://horecahub-2j1xtl.mysharetribe-test.com/" target="_blank" rel="noreferrer">HoReCaHub</a> позиционирование уже довольно правильное: world-class hospitality professionals ready to help you open a hotel anywhere on Earth, консультации и project support с локальными экспертами.</p>
+          <p>Первый найденный listing тоже хороший: <a href="https://horecahub-2j1xtl.mysharetribe-test.com/l/20-years-of-it-experience-in-hospitality-cis-markets/6a1da8b4-f46b-453e-ae0d-5613c6f3c09c" target="_blank" rel="noreferrer">20 years of IT experience in hospitality / CIS markets</a>.</p>
+          <ul>
+            <li>20 лет IT-опыта в hospitality</li>
+            <li>десятки hotel projects</li>
+            <li>WiFi, networks, telephony, TV, servers, PCs</li>
+            <li>знание локальных поставщиков и дистрибьюторов в CIS markets</li>
+          </ul>
+          <p>Именно эта зона выглядит сильной: не "любой эксперт для любого отеля", а человек, который знает, кто реально ставит WiFi, PMS, телефонию, замки или IPTV в конкретном регионе и кто уже проходил такие проекты.</p>
         </div>
       </div>
+    </section>
+
+    <section class="section" id="competitors">
+      <h2>3. Карта похожих проектов и заменителей</h2>
+      <div class="card" style="margin-bottom:18px;">
+        <div class="logos">
+          <a class="logo-card" href="https://www.hotelminder.com/lobby-hotelier-expert-network" target="_blank" rel="noreferrer"><img src="https://www.google.com/s2/favicons?domain=hotelminder.com&sz=128" alt=""><div><strong>HotelMinder Lobby</strong><div class="muted">Closest analog</div></div></a>
+          <a class="logo-card" href="https://cayugahospitality.com/" target="_blank" rel="noreferrer"><img src="https://www.google.com/s2/favicons?domain=cayugahospitality.com&sz=128" alt=""><div><strong>Cayuga</strong><div class="muted">Independent consultants</div></div></a>
+          <a class="logo-card" href="https://ishc.com/membership/" target="_blank" rel="noreferrer"><img src="https://www.google.com/s2/favicons?domain=ishc.com&sz=128" alt=""><div><strong>ISHC</strong><div class="muted">Elite trust network</div></div></a>
+          <a class="logo-card" href="https://www.thehospitalitynetwork.com/" target="_blank" rel="noreferrer"><img src="https://www.google.com/s2/favicons?domain=thehospitalitynetwork.com&sz=128" alt=""><div><strong>The Hospitality Network</strong><div class="muted">MENA discovery</div></div></a>
+          <a class="logo-card" href="https://www.hozpitality.com" target="_blank" rel="noreferrer"><img src="https://www.google.com/s2/favicons?domain=hozpitality.com&sz=128" alt=""><div><strong>Hozpitality</strong><div class="muted">Marketplace + community</div></div></a>
+          <a class="logo-card" href="https://hoteltechreport.com/" target="_blank" rel="noreferrer"><img src="https://www.google.com/s2/favicons?domain=hoteltechreport.com&sz=128" alt=""><div><strong>HotelTechReport</strong><div class="muted">Software discovery</div></div></a>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>A. Почти прямые аналоги</h3>
+        <table class="table">
+          <thead><tr><th>Проект</th><th>Что это</th><th>Насколько опасен</th></tr></thead>
+          <tbody>
+            <tr><td><a href="https://www.hotelminder.com/lobby-hotelier-expert-network" target="_blank" rel="noreferrer"><strong>HotelMinder Lobby</strong></a></td><td>Curated expert network для отельеров: commission-based, vetted experts, помощь с tech stack, PMS/RMS, implementation и operational support.</td><td>Очень опасен. Это самый близкий аналог.</td></tr>
+            <tr><td><a href="https://cayugahospitality.com/" target="_blank" rel="noreferrer"><strong>Cayuga Hospitality Consultants</strong></a></td><td>Сеть независимых hospitality consultants. Подбирают individual consultant или команду под проект.</td><td>Опасен в high-end consulting, но не как self-serve marketplace.</td></tr>
+            <tr><td><a href="https://ishc.com/membership/" target="_blank" rel="noreferrer"><strong>ISHC</strong></a></td><td>International Society of Hospitality Consultants: сеть консультантов по hospitality, разные страны и специализации.</td><td>Сильный источник доверия, но это скорее elite directory/network.</td></tr>
+            <tr><td><a href="https://www.thehospitalitynetwork.com/" target="_blank" rel="noreferrer"><strong>The Hospitality Network</strong></a></td><td>Middle East hospitality network, directory, consulting/advisory, stakeholder mapping, project data, supplier discovery.</td><td>Опасен для MENA/GCC, особенно supplier discovery.</td></tr>
+          </tbody>
+        </table>
+        <p>Вывод: прямые и полу-прямые аналоги есть. Но большинство из них либо консалтинговые сети, либо директории, либо региональные networks. Окно есть в формате transactional verified local expert marketplace, особенно для конкретных задач открытия отеля.</p>
+      </div>
+
+      <div class="card" style="margin-top:18px;">
+        <h3>B. Поставщики, supplier directories и procurement marketplaces</h3>
+        <p>Эта категория важна, потому что в идее Егора упоминаются vendors, integrators и suppliers. Но именно здесь рынок наиболее перегрет: directories, закупочные сети и software review-платформы уже существуют.</p>
+        <table class="table">
+          <thead><tr><th>Проект</th><th>Что это</th><th>Что это значит для HoReCaHub</th></tr></thead>
+          <tbody>
+            <tr><td><a href="https://www.prnewswire.com/ae/news-releases/the-newly-launched-hozpitality-marketplace-is-buzzing-with-best-hospitality-industry-suppliers-from-around-the-world-898631589.html" target="_blank" rel="noreferrer"><strong>Hozpitality Marketplace</strong></a></td><td>Hospitality community + marketplace для suppliers, products, offers, deals; у Hozpitality большая база hospitality professionals.</td><td>С supplier listings конкурировать трудно. У них уже есть аудитория.</td></tr>
+            <tr><td><a href="https://hoteltechreport.com/" target="_blank" rel="noreferrer"><strong>HotelTechReport</strong></a></td><td>Review/discovery platform для hotel software: PMS, RMS, guest experience, operations и др.; verified hotelier reviews и vendor listings.</td><td>Для software discovery они уже сильные. Конкурировать как каталог PMS бессмысленно.</td></tr>
+            <tr><td><a href="https://www.discoverastria.com/" target="_blank" rel="noreferrer"><strong>Astria / Forbes Travel Guide</strong></a></td><td>Luxury hotel supplier marketplace: vetted suppliers, vendor discovery для Forbes-rated properties.</td><td>Сильный luxury supplier discovery. HoReCaHub должен идти не туда.</td></tr>
+            <tr><td><a href="https://www.thehoteldepot.com/" target="_blank" rel="noreferrer"><strong>The Hotel Depot</strong></a></td><td>B2B hotel supplier directory / hospitality marketplace: suppliers, service providers, software, RFQ, promotions, reviews.</td><td>Показывает, что directory-модель уже crowded.</td></tr>
+            <tr><td><a href="https://theworldofhospitalitydirectory.com/" target="_blank" rel="noreferrer"><strong>World of Hospitality Directory</strong></a></td><td>Supplier directory по категориям и локациям: kitchen, furniture, design, software, systems, hospitality services.</td><td>Еще одно подтверждение: просто каталог поставщиков — слабая дифференциация.</td></tr>
+            <tr><td><a href="https://www.sme10x.com/technology/new-horeca-b2b-marketplace-launched-in-gccs" target="_blank" rel="noreferrer"><strong>SupplyMe</strong></a></td><td>HoReCa B2B marketplace для F&amp;B supply chain в UAE/GCC: suppliers list products, buyers закупают онлайн.</td><td>Если уходить в товары/закупки, конкуренция и операционная сложность резко растут.</td></tr>
+            <tr><td><a href="https://www.avendra.com/en/us/resources/company-news/how-aahoa-and-avendra-international-are-transforming-procurement-for-select-service-hotels" target="_blank" rel="noreferrer"><strong>Avendra / AAHOA Marketplace</strong></a></td><td>Гостиничные procurement networks и e-procurement platforms с сотнями поставщиков и enterprise-процессами.</td><td>Для procurement у крупных игроков уже есть инфраструктура.</td></tr>
+          </tbody>
+        </table>
+        <p class="quote">Жесткий вывод: не надо начинать с vendors marketplace или supplier directory. Это crowded, низкая дифференциация, SEO-heavy, и пользователи могут просто искать в Google, LinkedIn, HotelTechReport, Hozpitality, Avendra или Astria.</p>
+        <p>Лучше начать с экспертной консультации, где ценность не в списке поставщиков, а в ответе: "Кого реально можно нанять в Алматы / Дубае / Эр-Рияде / Тбилиси / Астане / Ташкенте, кто уже делал гостиницы и не облажается?"</p>
+      </div>
+
+      <div class="card" style="margin-top:18px;">
+        <h3>C. Общие expert marketplaces и freelance platforms</h3>
+        <table class="table">
+          <thead><tr><th>Проект</th><th>Что это</th><th>Почему это важно</th></tr></thead>
+          <tbody>
+            <tr><td><a href="https://www.upwork.com/hire/hospitality-freelancers/ae/dubai/" target="_blank" rel="noreferrer"><strong>Upwork hospitality freelancers</strong></a></td><td>Уже можно найти hospitality specialists, consultants, hotel tech consultants, tourism experts.</td><td>Показывает, что supply существует, но доверие и отраслевой фильтр слабые.</td></tr>
+            <tr><td><a href="https://clarity.fm/" target="_blank" rel="noreferrer"><strong>Clarity.fm</strong></a></td><td>On-demand business advice от экспертов.</td><td>Модель pay-for-call давно существует.</td></tr>
+            <tr><td><a href="https://www.maven.co/" target="_blank" rel="noreferrer"><strong>Maven</strong></a></td><td>Expert network для 1:1 expert interviews, surveys, market research.</td><td>Общий рынок paid expertise уже зрелый.</td></tr>
+            <tr><td><a href="https://catalant.com/" target="_blank" rel="noreferrer"><strong>Catalant</strong></a></td><td>Marketplace vetted independent consultants, enterprise projects.</td><td>Для enterprise consulting уже есть сильные игроки.</td></tr>
+            <tr><td><a href="https://glg.com/" target="_blank" rel="noreferrer"><strong>GLG</strong></a></td><td>Крупная expert network для консультаций с экспертами по индустриям.</td><td>Для high-end expert calls HoReCaHub будет слишком маленьким.</td></tr>
+          </tbody>
+        </table>
+        <p>Вывод: модель экспертных консультаций валидирована рынком. Но выигрывать нужно не против GLG, Catalant или Upwork, а за счет узкой гостиничной вертикали, локальной верификации и practical implementation knowledge.</p>
+      </div>
+
+      <div class="card" style="margin-top:18px;">
+        <h3>D. Классические hospitality consulting firms</h3>
+        <p>Есть крупные традиционные консультанты: <a href="https://www.hvs.com/" target="_blank" rel="noreferrer">HVS</a>, <a href="https://horwathhtl.com/" target="_blank" rel="noreferrer">Horwath HTL</a>, <a href="https://www.jll.com/en-us/industries/hotels-and-hospitality" target="_blank" rel="noreferrer">JLL Hotels &amp; Hospitality</a>, <a href="https://www.royainternational.com/" target="_blank" rel="noreferrer">Roya International</a>. Они подтверждают, что рынок консультаций огромный.</p>
+        <p>Но они не решают задачу маленького или среднего игрока: "Мне надо за 45 минут понять, кого нанять для WiFi/PMS/прачки/кухни в конкретном регионе". Именно тут есть ниша.</p>
+      </div>
+    </section>
+
+    <section class="section" id="demand">
+      <h2>4. Есть ли реальный спрос?</h2>
+      <div class="grid">
+        <div class="card span-3"><div class="metric">15,922</div><div class="metric-label">projects in global pipeline</div></div>
+        <div class="card span-3"><div class="metric">2.44M</div><div class="metric-label">rooms</div></div>
+        <div class="card span-3"><div class="metric">6,140</div><div class="metric-label">under construction</div></div>
+        <div class="card span-3"><div class="metric">3,845</div><div class="metric-label">scheduled to start</div></div>
+        <div class="card span-12">
+          <p>Да, спрос выглядит реальным. Согласно <a href="https://lodgingmagazine.com/lodging-econometrics-global-hotel-construction-pipeline-reaches-record-high-project-count-in-q4-2025/" target="_blank" rel="noreferrer">Lodging Econometrics global pipeline</a>, глобальный hotel construction pipeline на конец 2025 года достиг рекордных 15,922 проектов / 2.44 млн rooms, включая 6,140 проектов under construction и 3,845 scheduled to start in the next 12 months. Также прогнозировались тысячи новых открытий в 2026 и 2027 годах.</p>
+          <p>Middle East отдельно тоже растет: <a href="https://lodgingeconometrics.com/middle-east-hotel-construction-pipeline-shows-positive-growth-in-q1-2026-reaches-a-record-high-717-projects/" target="_blank" rel="noreferrer">Lodging Econometrics Middle East pipeline</a> указывает на активный pipeline в регионе, включая проекты under construction и scheduled to start. Saudi Arabia, Egypt и UAE входят в крупнейшие рынки pipeline.</p>
+          <p>Это не означает, что все эти проекты купят консультации на marketplace. Но это означает, что pre-opening, renovation, conversion, vendor selection и локальная имплементация — массовые повторяющиеся задачи.</p>
+          <p>Также виден спрос в комьюнити: отельеры в <a href="https://www.reddit.com/r/hotels/comments/1pb4497/hotel_owners_how_do_you_prevent_staff_from_gaming/" target="_blank" rel="noreferrer">Reddit r/hotels discussion</a> обсуждают операционные и технологические вопросы, выбор систем, интеграции и реальные практики. Это анекдотический, но полезный сигнал: люди ищут практические советы от тех, кто уже внедрял решения.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="risks">
+      <h2>5. Главные подводные камни</h2>
+      <div class="grid">
+        <div class="card span-6">
+          <h3>1. Это не software-проблема, а marketplace-liquidity проблема</h3>
+          <p>Сайт сделать легко. Настоящая проблема: когда покупатель ищет "WiFi expert in Kazakhstan for 120-room hotel", там должен быть правильный человек. Если его нет — покупатель ушел и, скорее всего, не вернется.</p>
+          <p>Это классическая chicken-and-egg проблема marketplace. В обсуждениях фаундеров маркетплейсов на <a href="https://www.reddit.com/r/startups/comments/h0gtkb/how_do_you_get_first_suppliers_on_your/" target="_blank" rel="noreferrer">Reddit r/startups</a> часто повторяется один и тот же сценарий: продукт построили, но не смогли собрать одновременно supply и demand.</p>
+          <p class="pill">Риск: 9/10. Это главный риск проекта.</p>
+        </div>
+        <div class="card span-6">
+          <h3>2. Слишком широкий scope убьет проект</h3>
+          <p>"Все участники hospitality индустрии по всей планете" — это не positioning. Это каталог всего.</p>
+          <p>Сегменты слишком разные: IT-интеграторы, laundry experts, F&amp;B consultants, procurement, architects, OS&amp;E / FF&amp;E suppliers, PMS consultants, GM, revenue management, housekeeping, kitchen equipment, legal/franchise advisors.</p>
+          <p>У каждого сегмента свой buyer, своя срочность, свой чек и свой цикл сделки. Правильный старт: одна категория + один регион + один сценарий. Например: CIS/GCC hotel IT pre-opening experts: WiFi, PMS, locks, IPTV, telephony, infrastructure.</p>
+        </div>
+        <div class="card span-6">
+          <h3>3. Комиссия будет утекать мимо платформы</h3>
+          <p>После первой консультации клиент и эксперт могут просто обменяться WhatsApp/LinkedIn и продолжить напрямую. Это называется marketplace leakage или disintermediation. <a href="https://www.sharetribe.com/academy/how-to-discourage-people-from-going-around-your-payment-system/" target="_blank" rel="noreferrer">Sharetribe</a> описывает leakage как ситуацию, когда пользователи обходят payment system, если платформа не дает достаточно ценности после первого контакта.</p>
+          <p>Исследования по freelance marketplaces также показывают, что у клиентов и исполнителей особенно сильный стимул уходить off-platform при long-term и high-value работах. См. <a href="https://questromworld.bu.edu/platformstrategy/wp-content/uploads/sites/49/2019/07/PlatStrat2019_paper_38.pdf" target="_blank" rel="noreferrer">Boston University platform leakage paper</a>.</p>
+          <p>Что делать:</p>
+          <ul>
+            <li>escrow</li>
+            <li>project brief</li>
+            <li>vendor shortlist</li>
+            <li>templates</li>
+            <li>NDA</li>
+            <li>RFQ workflow</li>
+            <li>milestone payments</li>
+            <li>verified references</li>
+            <li>dispute handling</li>
+            <li>insurance / гарантия качества</li>
+            <li>project archive</li>
+          </ul>
+          <p>Иначе take rate будет слабым.</p>
+        </div>
+        <div class="card span-6">
+          <h3>4. Подписка 5000 тенге в месяц на старте почти не сработает</h3>
+          <p>Проблема не в цене. Проблема в том, что поставщик спросит: "Сколько лидов я получу?" Если ответа нет — он не будет платить даже маленькую сумму.</p>
+          <p>Подписка работает, когда уже есть demand. На старте лучше:</p>
+          <ul>
+            <li>free verified profile</li>
+            <li>комиссия с консультации</li>
+            <li>success fee за qualified lead</li>
+            <li>paid promotion только после появления трафика</li>
+          </ul>
+          <p><a href="https://www.sharetribe.com/academy/how-to-choose-the-right-business-model-for-your-marketplace/" target="_blank" rel="noreferrer">Sharetribe marketplace business models</a> отмечает, что комиссия является основной моделью у большинства крупных marketplace, а subscriptions часто комбинируются позже.</p>
+        </div>
+        <div class="card span-6">
+          <h3>5. Конфликт интересов консультантов</h3>
+          <p>Очень опасный момент: эксперт может советовать не лучшего поставщика, а того, кто платит ему referral fee. В материале <a href="https://hospitalitymarketplace.co.za/2025/10/24/op-ed-hotel-operations-mythbusters-the-truth-about-tech-consultants-and-ai/" target="_blank" rel="noreferrer">Hospitality Marketplace tech consultants bias</a> прямо поднимается тема biases и комиссий consultants от technology companies.</p>
+          <p>Для HoReCaHub это критично. Если платформа хочет быть trusted, нужно сразу делать:</p>
+          <ul>
+            <li>independent expert badge</li>
+            <li>mandatory disclosure о комиссиях от vendors</li>
+            <li>vendor-affiliated badge</li>
+            <li>reviews только от verified hotel projects</li>
+            <li>project history verification</li>
+          </ul>
+        </div>
+        <div class="card span-6">
+          <h3>6. Верификация будет дорогой и ручной</h3>
+          <p>Идея со звездами по количеству отелей хорошая, но ее нельзя оставлять self-reported. Иначе каждый напишет: "20 years experience, 100 hotels, Marriott, Hilton, Accor".</p>
+          <p>Нужна структура:</p>
+          <ul>
+            <li>project name</li>
+            <li>country/city</li>
+            <li>hotel type</li>
+            <li>role</li>
+            <li>year</li>
+            <li>evidence</li>
+            <li>reference contact</li>
+            <li>LinkedIn match</li>
+            <li>brand/project page</li>
+            <li>optional NDA-safe verification</li>
+          </ul>
+          <p>Лучше показывать не просто stars, а verified project count: 17 verified hotel projects, 4 chain projects, 3 countries, 2 references checked.</p>
+        </div>
+        <div class="card span-6">
+          <h3>7. Отели часто покупают через relationships, а не через marketplace</h3>
+          <p>Это одновременно проблема и возможность. Проблема: многие GM, owners, procurement directors доверяют личным рекомендациям, а не платформам.</p>
+          <p>Возможность: если HoReCaHub станет структурированной формой личных рекомендаций, он может работать. То есть это не должен быть "каталог". Это должен быть: "I know a guy, but verified, searchable and bookable".</p>
+        </div>
+        <div class="card span-6">
+          <h3>8. Supplier directory как отдельный продукт слабее expert marketplace</h3>
+          <p>Supplier directory легко копируется. Там будут проблемы:</p>
+          <ul>
+            <li>SEO-конкуренция</li>
+            <li>много мусорных listings</li>
+            <li>suppliers не обновляют профили</li>
+            <li>сложно доказать качество</li>
+            <li>buyers не хотят читать 200 карточек</li>
+            <li>vendor bias</li>
+            <li>низкая willingness to pay без лидов</li>
+          </ul>
+          <p>Поэтому supplier database должна быть внутренним активом экспертов, а не основной витриной. Продавать нужно не список поставщиков, а ответ, shortlist, verified introduction и снижение риска ошибки.</p>
+        </div>
+        <div class="card span-6">
+          <h3>9. Глобальность — ловушка</h3>
+          <p>"Worldwide" звучит красиво, но marketplace требует плотности. Лучше иметь 30 сильных экспертов в одной зоне, чем 300 пустых профилей по миру.</p>
+          <p>Плохой старт: Kazakhstan, UAE, Spain, Turkey, India, Germany, USA — по одному человеку в каждой категории.</p>
+          <p>Хороший старт: 50 verified experts по hotel IT / pre-opening в CIS + GCC.</p>
+        </div>
+        <div class="card span-6">
+          <h3>10. Сложный buyer journey</h3>
+          <p>Кто покупатель: owner, developer, franchisee, GM, pre-opening director, procurement, IT manager, asset manager, architect или project management company? У каждого разная боль.</p>
+          <p>Нужно выбрать одного primary buyer. Мой выбор: owner / developer / pre-opening director small-to-mid hotel, который открывает или реконструирует объект и не имеет сильной внутренней команды.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>6. Что делает идею реально сильной</h2>
+      <div class="grid">
+        <div class="card span-7">
+          <p>Идея становится сильной, если HoReCaHub не пытается быть "еще одним каталогом", а строит verified hospitality knowledge graph.</p>
+          <p class="quote">То есть не просто: Иван Иванов, IT consultant. А: Иван Иванов; 80 hotel projects; CIS markets; WiFi / PMS / IPTV / telephony / locks; worked with 120-room business hotels, resorts, branded properties; knows local distributors and implementation vendors; can produce vendor shortlist in 48 hours; references verified. Вот это ценно.</p>
+        </div>
+        <div class="card span-5">
+          <h3>Потенциальный moat</h3>
+          <ul>
+            <li>Verified project history — кто что реально делал.</li>
+            <li>Local vendor map — кто реально работает в регионе.</li>
+            <li>Hotel opening playbooks — templates, checklists, RFQ.</li>
+            <li>Expert reputation by project type, not generic reviews.</li>
+            <li>Community layer — закрытая сеть industry insiders.</li>
+            <li>Transaction workflow — call -&gt; brief -&gt; shortlist -&gt; RFQ -&gt; project support.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="validation">
+      <h2>7. Как проверять viability</h2>
+      <div class="grid">
+        <div class="card span-6">
+          <h3>Гипотеза 1: покупатели готовы платить за 1-hour expert call</h3>
+          <ul>
+            <li>Найти 30 людей, которые открывают или реконструируют отель.</li>
+            <li>Предложить 60-minute consultation with verified local expert.</li>
+            <li>Цена: $100-300 за call.</li>
+            <li>Темы: WiFi, PMS, locks, procurement, local suppliers, pre-opening risks.</li>
+          </ul>
+          <p><strong>Pass criteria:</strong> 10+ согласятся на звонок; 5+ реально заплатят; 2+ попросят follow-up/project support. Если люди говорят "круто", но не платят — спрос слабый.</p>
+        </div>
+        <div class="card span-6">
+          <h3>Гипотеза 2: эксперты готовы продавать консультации через платформу</h3>
+          <ul>
+            <li>Собрать 50 экспертов.</li>
+            <li>Из них 20 должны иметь подтверждаемые hotel projects.</li>
+            <li>10 должны согласиться на paid calls.</li>
+            <li>5 должны дать project evidence / references.</li>
+          </ul>
+          <p><strong>Pass criteria:</strong> эксперты готовы поставить цену, быстро отвечать, пройти verification и отдавать commission.</p>
+        </div>
+        <div class="card span-6">
+          <h3>Гипотеза 3: narrow wedge работает лучше, чем broad marketplace</h3>
+          <p>Сделать 3 landing pages и сравнить не лайки, а paid intent:</p>
+          <ol>
+            <li>Hotel IT Pre-opening Experts</li>
+            <li>Hospitality Procurement &amp; Local Suppliers</li>
+            <li>Hotel Operations / GM Advisory</li>
+          </ol>
+          <p>Победитель — где больше реальных заявок и платежей, а не просто интереса.</p>
+        </div>
+        <div class="card span-6">
+          <h3>Гипотеза 4: commission удерживается</h3>
+          <ul>
+            <li>После первого call проверить, остался ли клиент на платформе.</li>
+            <li>Готов ли купить второй call.</li>
+            <li>Готов ли заказать vendor shortlist.</li>
+            <li>Готов ли заплатить за project support.</li>
+            <li>Не ушел ли напрямую в WhatsApp.</li>
+          </ul>
+          <p>Если все уходят напрямую, нужна не просто комиссия, а transaction workflow.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="monetization">
+      <h2>8. Модель монетизации</h2>
+      <div class="grid">
+        <div class="card span-6">
+          <h3>На старте</h3>
+          <ul>
+            <li>Buyer side: бесплатно.</li>
+            <li>Expert side: бесплатно.</li>
+            <li>Доход: 15-20% commission с paid consultation.</li>
+          </ul>
+          <p>Почему: на старте важнее liquidity, чем revenue.</p>
+        </div>
+        <div class="card span-6">
+          <h3>После первых сделок</h3>
+          <ul>
+            <li>Verified profile upgrade — не просто листинг, а verification package.</li>
+            <li>Qualified lead fee — vendor платит за warm intro / RFQ.</li>
+            <li>Project support fee — если после консультации возникает проект на $5k-50k, платформа берет success fee или фиксированную coordination fee.</li>
+            <li>Sponsored placement — только после появления трафика и обязательно с маркировкой sponsored, иначе это убьет trust.</li>
+            <li>Buyer package — например, "Hotel Opening Vendor Shortlist" за $500-1500. Это может быть сильнее, чем просто call.</li>
+          </ul>
+        </div>
+        <div class="card span-12">
+          <h3>Чего не делать сразу</h3>
+          <p>Не начинать с subscription 5000 тенге/month за listing. Это даст мало денег и создаст friction. Поставщики будут платить за лиды, а не за присутствие в пустом каталоге.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>9. Рекомендованное позиционирование</h2>
+      <div class="grid">
+        <div class="card span-4"><h3 class="bad">Плохое позиционирование</h3><p>Marketplace for hospitality professionals worldwide. Слишком широко.</p></div>
+        <div class="card span-4"><h3 class="warn">Лучше</h3><p>Verified local experts for hotel openings and hospitality projects.</p></div>
+        <div class="card span-4"><h3 class="good">Еще лучше / strongest</h3><p>Find verified local hospitality experts who have already opened hotels in your market.</p><p><strong>Local hotel pre-opening experts: IT, PMS, WiFi, procurement and operations — verified by real hotel projects.</strong></p><p>Это сразу понятно покупателю.</p></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>10. Оценка viability</h2>
       <div class="card">
         <table class="table">
-          <thead><tr><th>Проект</th><th>Что это</th><th>Насколько опасен / вывод</th></tr></thead>
+          <thead><tr><th>Критерий</th><th>Оценка</th></tr></thead>
           <tbody>
-            <tr><td><strong><a href="https://www.hotelminder.com" target="_blank" rel="noreferrer">HotelMinder Lobby</a></strong></td><td>Curated network гостиничных экспертов: vetted experts, помощь с tech stack, PMS/RMS, implementation и operational support; модель commission-based.</td><td><span class="risk">Очень опасен.</span> Самый близкий аналог и главное доказательство, что рынок уже увидели.</td></tr>
-            <tr><td><strong><a href="https://cayugahospitality.com" target="_blank" rel="noreferrer">Cayuga Hospitality Consultants</a></strong></td><td>Сеть независимых hospitality consultants, подбирают эксперта или команду под проект.</td><td>Опасен в high-end consulting, но не self-serve marketplace.</td></tr>
-            <tr><td><strong><a href="https://ishc.com" target="_blank" rel="noreferrer">ISHC</a></strong></td><td>International Society of Hospitality Consultants — сеть консультантов по разным рынкам и специализациям.</td><td>Сильный trust source, но скорее elite directory/network.</td></tr>
-            <tr><td><strong><a href="https://www.thehospitalitynetwork.com" target="_blank" rel="noreferrer">The Hospitality Network</a></strong></td><td>Middle East hospitality network, stakeholder mapping, project data, supplier discovery, advisory.</td><td>Опасен для MENA/GCC, особенно в supplier discovery.</td></tr>
-            <tr><td><strong><a href="https://www.hozpitality.com" target="_blank" rel="noreferrer">Hozpitality Marketplace</a></strong></td><td>Hospitality community + marketplace для suppliers, products, deals и jobs.</td><td>С supplier listings конкурировать тяжело — у них уже аудитория.</td></tr>
-            <tr><td><strong><a href="https://hoteltechreport.com" target="_blank" rel="noreferrer">HotelTechReport</a></strong></td><td>Review/discovery platform для hotel software, vendor listings, verified hotelier reviews.</td><td>Идти в «каталог PMS» бессмысленно — фронт уже занят.</td></tr>
-            <tr><td><strong><a href="https://www.forbestravelguide.com/astria" target="_blank" rel="noreferrer">Astria / Forbes Travel Guide</a></strong></td><td>Luxury supplier marketplace для Forbes-rated properties.</td><td>Luxury supplier discovery уже закрыт сильными игроками.</td></tr>
-            <tr><td><strong><a href="https://www.thehoteldepot.com" target="_blank" rel="noreferrer">The Hotel Depot</a></strong></td><td>B2B hotel supplier directory: suppliers, service providers, software, RFQ, promotions, reviews.</td><td>Еще одно подтверждение, что directory-модель crowded.</td></tr>
-            <tr><td><strong><a href="https://www.avendra.com" target="_blank" rel="noreferrer">Avendra</a> / <a href="https://www.aahoa.com" target="_blank" rel="noreferrer">AAHOA Marketplace</a></strong></td><td>Крупные procurement networks и enterprise buying infrastructure.</td><td>В procurement уже сидят тяжеловесы с инфраструктурой.</td></tr>
+            <tr><td>Реальность боли</td><td>8/10</td></tr>
+            <tr><td>Размер рынка</td><td>7/10</td></tr>
+            <tr><td>Конкурентность</td><td>7/10</td></tr>
+            <tr><td>Уникальность broad marketplace</td><td>3/10</td></tr>
+            <tr><td>Уникальность verified local expert network</td><td>7/10</td></tr>
+            <tr><td>Сложность запуска marketplace</td><td>9/10</td></tr>
+            <tr><td>Viability как global HoReCa marketplace</td><td>4/10</td></tr>
+            <tr><td>Viability как узкий pre-opening expert network</td><td>7/10</td></tr>
+            <tr><td>Viability как supplier directory/subscription</td><td>3/10</td></tr>
+            <tr><td>Viability как concierge-first expert marketplace</td><td>8/10</td></tr>
           </tbody>
         </table>
       </div>
     </section>
 
     <section class="section">
-      <div class="grid">
-        <div class="card span-6">
-          <h3>Что это значит стратегически</h3>
-          <p class="muted">Не надо стартовать как vendors marketplace или supplier directory. Этот слой crowded, SEO-heavy, легко копируется и плохо дифференцируется.</p>
-          <p class="quote">Правильный продукт отвечает не на вопрос «какие есть карточки», а на вопрос «кого реально можно нанять в Алматы / Дубае / Эр-Рияде / Тбилиси / Астане / Ташкенте, кто уже делал гостиницы и не облажается?»</p>
-        </div>
-        <div class="card span-6">
-          <h3>Модель уже валидирована рынком</h3>
-          <ul>
-            <li><a href="https://www.upwork.com" target="_blank" rel="noreferrer">Upwork</a> показывает, что supply специалистов существует.</li>
-            <li><a href="https://clarity.fm" target="_blank" rel="noreferrer">Clarity.fm</a> давно доказал жизнеспособность pay-for-call.</li>
-            <li><a href="https://gomaven.com" target="_blank" rel="noreferrer">Maven</a>, <a href="https://gocatalant.com" target="_blank" rel="noreferrer">Catalant</a>, <a href="https://glginsights.com" target="_blank" rel="noreferrer">GLG</a> подтверждают зрелость рынка paid expertise.</li>
-            <li>Значит, выигрывать нужно узкой вертикалью, локальной верификацией и practical implementation knowledge.</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="demand">
-      <h2>Есть ли реальный спрос?</h2>
-      <div class="grid">
-        <div class="card span-4"><div class="metric">15,922</div><div class="metric-label">глобальных hotel projects в pipeline к концу 2025</div></div>
-        <div class="card span-4"><div class="metric">2.44M</div><div class="metric-label">rooms в global pipeline</div></div>
-        <div class="card span-4"><div class="metric">6,140</div><div class="metric-label">projects under construction</div></div>
-        <div class="card span-4"><div class="metric">3,845</div><div class="metric-label">scheduled to start within 12 months</div></div>
-        <div class="card span-8">
-          <h3>Сигнал спроса</h3>
-          <p class="muted">Согласно <a href="https://lodgingeconometrics.com" target="_blank" rel="noreferrer">Lodging Econometrics</a>, global hotel construction pipeline к концу 2025 достиг рекордных 15,922 проектов и 2.44 млн rooms. В Middle East pipeline тоже активный рост, особенно в Saudi Arabia, Egypt и UAE.</p>
-          <p class="muted">Это не значит, что все купят консультации. Но это значит, что pre-opening, renovation, conversion, vendor selection и локальная имплементация — массовые повторяющиеся задачи с деньгами и срочностью.</p>
-        </div>
-      </div>
-      <div class="grid" style="margin-top:18px;">
-        <div class="card span-6">
-          <h3>Комьюнити-сигналы</h3>
-          <p class="muted">В сообществах вроде <a href="https://www.reddit.com/r/hotels/" target="_blank" rel="noreferrer">Reddit r/hotels</a> регулярно обсуждают операционные и технологические вопросы: выбор PMS, интеграции, vendor quality, реальные кейсы внедрения.</p>
-        </div>
-        <div class="card span-6">
-          <h3>Почему это важно</h3>
-          <p class="muted">Люди ищут не обзорный контент, а практические советы от тех, кто уже проходил похожий проект. Это и есть ядро value proposition.</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="risks">
-      <h2>Главные подводные камни</h2>
-      <div class="grid">
-        <div class="card span-6"><h3>1. Liquidity — главный риск <span class="risk">9/10</span></h3><p class="muted">Это не software-проблема. Если buyer не нашел нужного эксперта под конкретный hotel project, он ушел и может не вернуться. Классическая chicken-and-egg marketplace проблема.</p></div>
-        <div class="card span-6"><h3>2. Слишком широкий scope</h3><p class="muted">IT, laundry, F&amp;B, procurement, architects, OS&amp;E / FF&amp;E, PMS, GM, revenue management, housekeeping, kitchen equipment, legal/franchise — это слишком разные миры для одного старта.</p></div>
-        <div class="card span-6"><h3>3. Leakage / disintermediation</h3><p class="muted">После первой консультации клиент и эксперт уходят в WhatsApp/LinkedIn. Источники: <a href="https://www.sharetribe.com/academy/marketplace-leakage/" target="_blank" rel="noreferrer">Sharetribe</a> и исследования platform leakage.</p></div>
-        <div class="card span-6"><h3>4. Подписка рано не взлетит</h3><p class="muted">Не проблема в 5000 тенге. Проблема в вопросе: «Сколько лидов я получу?» Пока нет demand, listing subscription почти не работает.</p></div>
-        <div class="card span-6"><h3>5. Конфликт интересов экспертов</h3><p class="muted">Эксперт может пушить не лучшего поставщика, а того, кто платит referral fee. Нужны disclosure, badges и vendor-affiliated маркировка.</p></div>
-        <div class="card span-6"><h3>6. Верификация дорогая и ручная</h3><p class="muted">Нельзя верить self-reported claims вроде «100 hotels, Hilton, Marriott, Accor». Нужны project evidence, reference checks, LinkedIn match, brand/project page.</p></div>
-        <div class="card span-6"><h3>7. Отели покупают через relationships</h3><p class="muted">Это не только риск, но и шанс: платформа должна стать структурированной формой личных рекомендаций, а не бездушным каталогом.</p></div>
-        <div class="card span-6"><h3>8. Supplier directory слабее</h3><p class="muted">SEO-конкуренция, мусорные listings, vendors не обновляют профили, низкая willingness to pay без лидов. Supplier DB — внутренний актив, а не главный продукт.</p></div>
-        <div class="card span-6"><h3>9. Глобальность — ловушка</h3><p class="muted">Лучше 50 сильных verified experts по hotel IT / pre-opening в CIS + GCC, чем 300 пустых профилей по миру.</p></div>
-        <div class="card span-6"><h3>10. Сложный buyer journey</h3><p class="muted">Owner, developer, franchisee, GM, pre-opening director, procurement, IT manager, architect — у всех разная боль. Вероятный primary buyer: owner / developer / pre-opening director small-to-mid hotel.</p></div>
-      </div>
-    </section>
-
-    <section class="section">
-      <h2>Что делает идею реально сильной</h2>
-      <div class="grid">
-        <div class="card span-7">
-          <h3>Не каталог. Knowledge graph.</h3>
-          <p class="muted">Сильная версия HoReCaHub — не просто directory, а <strong>verified hospitality knowledge graph</strong>.</p>
-          <p class="quote">Не «Иван Иванов, IT consultant», а «Иван Иванов — 80 hotel projects, CIS markets, WiFi / PMS / IPTV / telephony / locks, умеет собрать shortlist локальных поставщиков за 48 часов, references verified».</p>
-        </div>
-        <div class="card span-5">
-          <h3>Потенциальный moat</h3>
-          <ul>
-            <li>Verified project history</li>
-            <li>Local vendor map</li>
-            <li>Hotel opening playbooks</li>
-            <li>Expert reputation by project type</li>
-            <li>Call → brief → shortlist → RFQ → support workflow</li>
-            <li>Community layer для industry insiders</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <h2>Как проверять viability руками</h2>
-      <div class="grid">
-        <div class="card span-4"><h3>Гипотеза 1</h3><p><strong>Buyers готовы платить за 1-hour expert call.</strong></p><p class="muted">Тест: 30 потенциальных покупателей, 60-minute consultation за $100–300 по WiFi / PMS / locks / procurement / local suppliers.</p><p class="pill">Pass: 10+ agree, 5+ pay</p></div>
-        <div class="card span-4"><h3>Гипотеза 2</h3><p><strong>Эксперты готовы продавать консультации через платформу.</strong></p><p class="muted">Тест: 50 экспертов, 20 с верифицируемыми hotel projects, 10 готовы на paid calls.</p><p class="pill">Pass: проходят verification и принимают commission</p></div>
-        <div class="card span-4"><h3>Гипотеза 3</h3><p><strong>Narrow wedge конвертит лучше broad scope.</strong></p><p class="muted">Три лендинга: Hotel IT Pre-opening Experts / Hospitality Procurement &amp; Local Suppliers / Hotel Operations &amp; GM Advisory.</p><p class="pill">Pass: победитель по paid intent</p></div>
-      </div>
-    </section>
-
-    <section class="section" id="monetization">
-      <h2>Монетизация</h2>
-      <div class="grid">
-        <div class="card span-6">
-          <h3>На старте</h3>
-          <ul>
-            <li>Buyer side: бесплатно</li>
-            <li>Expert side: бесплатно</li>
-            <li>Доход: <strong>15–20% commission</strong> с paid consultation</li>
-          </ul>
-          <p class="muted">Почему: сначала важнее liquidity, чем revenue maximization.</p>
-        </div>
-        <div class="card span-6">
-          <h3>После первых сделок</h3>
-          <ul>
-            <li>Verified profile upgrade</li>
-            <li>Qualified lead fee / warm intro fee</li>
-            <li>Project support fee / success fee</li>
-            <li>Sponsored placement — только с маркировкой</li>
-            <li>Buyer package: vendor shortlist / RFQ / opening support</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="positioning">
-      <h2>Рекомендованное позиционирование</h2>
-      <div class="grid">
-        <div class="card span-4"><h3 class="bad">Плохо</h3><p class="muted">Marketplace for hospitality professionals worldwide.</p></div>
-        <div class="card span-4"><h3 class="warn">Лучше</h3><p class="muted">Verified local experts for hotel openings and hospitality projects.</p></div>
-        <div class="card span-4"><h3 class="good">Сильнее всего</h3><p class="muted">Local hotel pre-opening experts: IT, PMS, WiFi, procurement and operations — verified by real hotel projects.</p></div>
-      </div>
-    </section>
-
-    <section class="section">
       <div class="card">
-        <h2 style="margin-top:0;">Жесткий вывод</h2>
-        <p class="quote">Идея не должна стартовать как marketplace. Она должна стартовать как ручной concierge-сервис: «Скажи, какой отель ты открываешь, в какой стране и какая у тебя проблема — мы найдем тебе проверенного человека, который уже делал это в этом регионе».</p>
-        <p class="muted">После 20–50 ручных сделок станет видно, какие категории реально покупают, где возникает repeat, где люди уходят off-platform, какой средний чек и где уже можно строить marketplace-слой.</p>
+        <h2 style="margin-top:0;">11. Жесткий вывод</h2>
+        <p class="quote">Идея не должна стартовать как marketplace. Она должна стартовать как ручной concierge-сервис: "Скажи, какой отель ты открываешь, в какой стране, какая проблема — мы найдем тебе проверенного человека, который уже делал это в этом регионе".</p>
+        <p>Потом, когда вручную пройдет 20-50 сделок, станет понятно: какие категории реально покупают; какие эксперты востребованы; какой средний чек; где возникает repeat; где люди уходят off-platform; где можно брать комиссию; какие данные нужно верифицировать.</p>
+        <p>Только после этого стоит развивать marketplace. Если Егор сейчас сделает большой каталог "все для HoReCa", риск высокий. Если он начнет с узкой, дорогой, конкретной боли — например, hotel IT / pre-opening experts in CIS &amp; GCC — идея выглядит вполне viable.</p>
       </div>
     </section>
 
     <section class="section" id="sources">
-      <h2>Sources / external references</h2>
+      <h2>12. Источники и ссылки</h2>
       <div class="card">
-        <ul class="source-list">
-          <li><a href="https://www.hotelminder.com" target="_blank" rel="noreferrer">HotelMinder Lobby</a></li>
-          <li><a href="https://cayugahospitality.com" target="_blank" rel="noreferrer">Cayuga Hospitality Consultants</a></li>
-          <li><a href="https://ishc.com" target="_blank" rel="noreferrer">ISHC</a></li>
-          <li><a href="https://www.thehospitalitynetwork.com" target="_blank" rel="noreferrer">The Hospitality Network</a></li>
-          <li><a href="https://www.hozpitality.com" target="_blank" rel="noreferrer">Hozpitality Marketplace</a></li>
-          <li><a href="https://hoteltechreport.com" target="_blank" rel="noreferrer">HotelTechReport</a></li>
-          <li><a href="https://www.forbestravelguide.com/astria" target="_blank" rel="noreferrer">Astria / Forbes Travel Guide</a></li>
-          <li><a href="https://www.thehoteldepot.com" target="_blank" rel="noreferrer">The Hotel Depot</a></li>
-          <li><a href="https://www.avendra.com" target="_blank" rel="noreferrer">Avendra</a></li>
-          <li><a href="https://www.upwork.com" target="_blank" rel="noreferrer">Upwork</a></li>
-          <li><a href="https://clarity.fm" target="_blank" rel="noreferrer">Clarity.fm</a></li>
-          <li><a href="https://gomaven.com" target="_blank" rel="noreferrer">Maven</a></li>
-          <li><a href="https://gocatalant.com" target="_blank" rel="noreferrer">Catalant</a></li>
-          <li><a href="https://glginsights.com" target="_blank" rel="noreferrer">GLG</a></li>
-          <li><a href="https://lodgingeconometrics.com" target="_blank" rel="noreferrer">Lodging Econometrics</a></li>
-          <li><a href="https://www.reddit.com/r/hotels/" target="_blank" rel="noreferrer">Reddit r/hotels</a></li>
-          <li><a href="https://www.sharetribe.com/academy/marketplace-leakage/" target="_blank" rel="noreferrer">Sharetribe — Marketplace leakage</a></li>
-          <li><a href="https://www.sharetribe.com/academy/marketplace-business-models/" target="_blank" rel="noreferrer">Sharetribe — Marketplace business models</a></li>
-          <li><a href="https://www.hvs.com/" target="_blank" rel="noreferrer">HVS</a>, <a href="https://horwathhtl.com/" target="_blank" rel="noreferrer">Horwath HTL</a>, <a href="https://www.jll.com/en/industries/hotels-and-hospitality" target="_blank" rel="noreferrer">JLL Hotels &amp; Hospitality</a>, <a href="https://www.royainternational.com/" target="_blank" rel="noreferrer">Roya International</a></li>
+        <p>Все ссылки ниже кликабельны. Они также встроены в текст выше рядом с соответствующими названиями проектов, источников и рисков.</p>
+        <ul>
+          <li><a href="https://www.hotelminder.com/lobby-hotelier-expert-network" target="_blank" rel="noreferrer">HotelMinder Lobby</a></li>
+          <li><a href="https://horecahub-2j1xtl.mysharetribe-test.com/" target="_blank" rel="noreferrer">HoReCaHub test site</a></li>
+          <li><a href="https://horecahub-2j1xtl.mysharetribe-test.com/l/20-years-of-it-experience-in-hospitality-cis-markets/6a1da8b4-f46b-453e-ae0d-5613c6f3c09c" target="_blank" rel="noreferrer">HoReCaHub WiFi / IT listing</a></li>
+          <li><a href="https://cayugahospitality.com/" target="_blank" rel="noreferrer">Cayuga Hospitality Consultants</a></li>
+          <li><a href="https://ishc.com/membership/" target="_blank" rel="noreferrer">ISHC</a></li>
+          <li><a href="https://www.thehospitalitynetwork.com/" target="_blank" rel="noreferrer">The Hospitality Network</a></li>
+          <li><a href="https://www.prnewswire.com/ae/news-releases/the-newly-launched-hozpitality-marketplace-is-buzzing-with-best-hospitality-industry-suppliers-from-around-the-world-898631589.html" target="_blank" rel="noreferrer">Hozpitality Marketplace</a></li>
+          <li><a href="https://hoteltechreport.com/" target="_blank" rel="noreferrer">HotelTechReport</a></li>
+          <li><a href="https://www.discoverastria.com/" target="_blank" rel="noreferrer">Astria / Forbes Travel Guide</a></li>
+          <li><a href="https://www.thehoteldepot.com/" target="_blank" rel="noreferrer">The Hotel Depot</a></li>
+          <li><a href="https://theworldofhospitalitydirectory.com/" target="_blank" rel="noreferrer">World of Hospitality Directory</a></li>
+          <li><a href="https://www.sme10x.com/technology/new-horeca-b2b-marketplace-launched-in-gccs" target="_blank" rel="noreferrer">SupplyMe GCC launch</a></li>
+          <li><a href="https://www.avendra.com/en/us/resources/company-news/how-aahoa-and-avendra-international-are-transforming-procurement-for-select-service-hotels" target="_blank" rel="noreferrer">Avendra and AAHOA Marketplace</a></li>
+          <li><a href="https://www.upwork.com/hire/hospitality-freelancers/ae/dubai/" target="_blank" rel="noreferrer">Upwork hospitality freelancers</a></li>
+          <li><a href="https://clarity.fm/" target="_blank" rel="noreferrer">Clarity.fm</a></li>
+          <li><a href="https://www.maven.co/" target="_blank" rel="noreferrer">Maven</a></li>
+          <li><a href="https://catalant.com/" target="_blank" rel="noreferrer">Catalant</a></li>
+          <li><a href="https://glg.com/" target="_blank" rel="noreferrer">GLG</a></li>
+          <li><a href="https://www.hvs.com/" target="_blank" rel="noreferrer">HVS</a></li>
+          <li><a href="https://horwathhtl.com/" target="_blank" rel="noreferrer">Horwath HTL</a></li>
+          <li><a href="https://www.jll.com/en-us/industries/hotels-and-hospitality" target="_blank" rel="noreferrer">JLL Hotels &amp; Hospitality</a></li>
+          <li><a href="https://www.royainternational.com/" target="_blank" rel="noreferrer">Roya International</a></li>
+          <li><a href="https://lodgingmagazine.com/lodging-econometrics-global-hotel-construction-pipeline-reaches-record-high-project-count-in-q4-2025/" target="_blank" rel="noreferrer">Lodging Econometrics global pipeline</a></li>
+          <li><a href="https://lodgingeconometrics.com/middle-east-hotel-construction-pipeline-shows-positive-growth-in-q1-2026-reaches-a-record-high-717-projects/" target="_blank" rel="noreferrer">Lodging Econometrics Middle East pipeline</a></li>
+          <li><a href="https://www.reddit.com/r/startups/comments/h0gtkb/how_do_you_get_first_suppliers_on_your/" target="_blank" rel="noreferrer">Reddit r/startups marketplace suppliers</a></li>
+          <li><a href="https://www.reddit.com/r/hotels/comments/1pb4497/hotel_owners_how_do_you_prevent_staff_from_gaming/" target="_blank" rel="noreferrer">Reddit r/hotels discussion</a></li>
+          <li><a href="https://www.sharetribe.com/academy/how-to-discourage-people-from-going-around-your-payment-system/" target="_blank" rel="noreferrer">Sharetribe marketplace leakage</a></li>
+          <li><a href="https://questromworld.bu.edu/platformstrategy/wp-content/uploads/sites/49/2019/07/PlatStrat2019_paper_38.pdf" target="_blank" rel="noreferrer">Boston University platform leakage paper</a></li>
+          <li><a href="https://www.sharetribe.com/academy/how-to-choose-the-right-business-model-for-your-marketplace/" target="_blank" rel="noreferrer">Sharetribe marketplace business models</a></li>
+          <li><a href="https://hospitalitymarketplace.co.za/2025/10/24/op-ed-hotel-operations-mythbusters-the-truth-about-tech-consultants-and-ai/" target="_blank" rel="noreferrer">Hospitality Marketplace tech consultants bias</a></li>
         </ul>
       </div>
     </section>
 
-    <div class="footer">Built from the supplied HoReCaHub viability document · polished web version for sharing</div>
+    <div class="footer">Full-text web version of the original HoReCaHub viability document</div>
   </div>
 </body>
 </html>
